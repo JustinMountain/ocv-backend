@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  backend-express:
+    container_name: ocv-backend
+    restart: unless-stopped
+    build: .
+    # depends_on:
+    #   - database
+    environment:
+      # DB container_name used for the database connection in /data-pipeline/config/databasePool.ts
+      - DB_HOST=database
+    ports:
+      - 3001:3000
+    volumes: 
+      - ./express/:/usr/app/
+    networks:
+      - ocv-network
+
+networks:
+  ocv-network:
