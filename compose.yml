@@ -1,20 +1,17 @@
 ---
 services:
-  backend-express:
+  ocv-backend:
     container_name: ocv-backend
-    restart: unless-stopped
     build: .
-    # depends_on:
-    #   - database
     environment:
-      # DB container_name used for the database connection in /data-pipeline/config/databasePool.ts
-      - DB_HOST=database
+      # DB container_name used for the database connection in /config/databasePool.ts
+      - DB_HOST=ocv-postgres
     ports:
-      - 3001:3000
-    volumes: 
-      - ./express/:/usr/app/
+      - 3000:3000
     networks:
       - ocv-network
+    restart: unless-stopped
 
 networks:
   ocv-network:
+    external: true
