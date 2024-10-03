@@ -1,4 +1,4 @@
-version: '3.8'
+---
 services:
   backend-express:
     container_name: ocv-backend
