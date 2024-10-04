@@ -9,10 +9,7 @@ WORKDIR /usr/app
 COPY ./package*.json ./
 
 # Install dependencies
-RUN npm ci
-
-# Install ts-node and typescript
-RUN npm install -g ts-node typescript express
+RUN npm install
 
 # Copy all files
 COPY ./ ./
@@ -27,4 +24,4 @@ RUN chown -R node:node /usr/app
 USER node
 
 # Command to run when starting the container
-CMD ["ts-node", "app.ts"]
+CMD ["./init/init.sh"]
