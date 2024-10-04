@@ -7,7 +7,7 @@ services:
       # DB container_name used for the database connection in /config/databasePool.ts
       - DB_HOST=ocv-postgres
     ports:
-      - 3000:3000
+      - 3001:3000
     networks:
       - ocv-network
     restart: unless-stopped
