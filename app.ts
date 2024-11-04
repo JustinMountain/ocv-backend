@@ -39,23 +39,23 @@ app.use('/offices', officeRouter);
 /**
  * Creates an endpoint to run different database update scripts.
  */
-app.get('/scripts/update/:scriptname', async (req: Request, res: Response) => {
-  const scriptName = req.params.scriptname.toLowerCase();
-  const scriptToRun = scriptActions[scriptName as keyof typeof scriptActions];
+// app.get('/scripts/update/:scriptname', async (req: Request, res: Response) => {
+//   const scriptName = req.params.scriptname.toLowerCase();
+//   const scriptToRun = scriptActions[scriptName as keyof typeof scriptActions];
 
-  if (scriptToRun) {
-    try {
-      await scriptToRun();
-      console.log(`${CONSOLE_HIGHLIGHT}Script "${scriptName}" executed successfully${CONSOLE_RESET}`)
-      res.send("Script executed successfully");
-    } catch (error) {
-      console.error(`${CONSOLE_ERROR}Error executing ${scriptName}: ${CONSOLE_RESET}`, error);
-      res.status(500).send(`Error executing the script. Check the logs for more details.`);
-    }
-  } else {
-    res.status(404).send("Script not found.");
-  }
-});
+//   if (scriptToRun) {
+//     try {
+//       await scriptToRun();
+//       console.log(`${CONSOLE_HIGHLIGHT}Script "${scriptName}" executed successfully${CONSOLE_RESET}`)
+//       res.send("Script executed successfully");
+//     } catch (error) {
+//       console.error(`${CONSOLE_ERROR}Error executing ${scriptName}: ${CONSOLE_RESET}`, error);
+//       res.status(500).send(`Error executing the script. Check the logs for more details.`);
+//     }
+//   } else {
+//     res.status(404).send("Script not found.");
+//   }
+// });
 
 /**
  * Determines the port Express application listens on internally.
